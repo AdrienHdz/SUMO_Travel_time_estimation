@@ -1,3 +1,5 @@
 env
 osm.vehroute.xml
 vehroutedata.csv
+vehroutedata_cleaned.csv
+.Rproj.user
