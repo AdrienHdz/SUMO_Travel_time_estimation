@@ -6,7 +6,7 @@ library(tidyr)
 library(data.table)
 
 # Reading data
-mydata <- read.csv("vehroutedata.csv")
+mydata <- read.csv("Quebec/vehroutedata.csv")
 
 # Turning data into a correct format
 Correct_Shape <- function(data_input){
@@ -59,7 +59,7 @@ Setting_graph <- function(data_input){
   data_input$tt <- ifelse(!is.na(data_input$exitTimes2), (data_input$exitTimes-data_input$depart), data_input$tt)
   data_input$time <- data_input$time + data_input$depart
   
-  data_input <- data_input[data_input$type!="bus",]
+  data_input$type <- ifelse(!is.na(data_input$type), data_input[data_input$type!="bus",], data_input$type)
   
   data_input$depart <- NULL
   data_input$exitTimes2 <- NULL
@@ -70,4 +70,4 @@ Setting_graph <- function(data_input){
 
 vehroutedata_cleaned <- Setting_graph(data)
 
-write.csv(vehroutedata_cleaned, "vehroutedata_cleaned.csv")
+write.csv(vehroutedata_cleaned, "Quebec/vehroutedata_cleaned.csv")
