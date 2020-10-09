@@ -7,7 +7,8 @@
 #' contains the rownames and the subsequent columns are the sample identifiers.
 #' Any rows with duplicated row names will be dropped with the first one being
 #' kepted.
-#'
+#' @param infile Path to the input file
+#' @return A matrix of the infile
 #' @export
 
 traveltimeCLT <- function(data_train = NULL, L = NULL, M = NULL, data_TimeBins = NULL, bin = NULL, rules = NULL){
@@ -152,6 +153,9 @@ traveltimeCLT <- function(data_train = NULL, L = NULL, M = NULL, data_TimeBins =
   invisible(obj)
 }
 
+
+#' @param infile Path to the input file
+#' @return A matrix of the infile
 #' @export
 predict.traveltimeCLT <- function(traveltimeCLTobject = NULL, data_test = NULL, bin = "MR", rules = myrules){
 
@@ -237,6 +241,9 @@ predict.traveltimeCLT <- function(traveltimeCLTobject = NULL, data_test = NULL, 
 
 }
 
+
+#' @param infile Path to the input file
+#' @return A matrix of the infile
 #' @export
 create_test_trips<-function(M = 500, db, min.n = 1){
   ## Setting the graph
