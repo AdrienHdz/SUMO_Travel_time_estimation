@@ -13,6 +13,12 @@ traveltimeCLT(
   rules = NULL
 )
 }
+\arguments{
+\item{infile}{Path to the input file}
+}
+\value{
+A matrix of the infile
+}
 \description{
 This function loads a file as a matrix. It assumes that the first column
 contains the rownames and the subsequent columns are the sample identifiers.
