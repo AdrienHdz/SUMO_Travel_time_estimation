@@ -6,11 +6,11 @@ library(traveltimeHMM)
 library(dplyr)
 library(tidyr)
 library(data.table)
-source('05_Algorithm.R')
+source('07_Algorithm.R')
 
 
 # Loading data
-Sumo_data <- read.csv("Quebec/Real_data.csv")
+Sumo_data <- read.csv("Quebec/Sumo_data.csv")
 Sumo_data$speed <- exp(Sumo_data$logspeed)
 
 # Transforming variables
