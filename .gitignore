@@ -2,8 +2,8 @@ env
 osm.vehroute.xml
 vehroutedata.csv
 .Rproj.user
-Quebec/osm.vehroute.xml
-Quebec/vehroutedata.csv
-Quebec/vehroutedata_cleaned.csv
-Quebec/Sumo_data.csv
-Quebec/Real_data.csv
+Quebec_data/osm.vehroute.xml
+Quebec_data/vehroutedata.csv
+Quebec_data/vehroutedata_cleaned.csv
+Quebec_data/Sumo_data.csv
+Quebec_data/Real_data.csv
