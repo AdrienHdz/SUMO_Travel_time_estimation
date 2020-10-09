@@ -8,6 +8,7 @@
 #' Any rows with duplicated row names will be dropped with the first one being
 #' kepted.
 #' @param infile Path to the input file
+#' @import data.table
 #' @return A matrix of the infile
 #' @export
 
@@ -243,6 +244,7 @@ predict.traveltimeCLT <- function(traveltimeCLTobject = NULL, data_test = NULL, 
 
 
 #' @param infile Path to the input file
+#' @import data.table
 #' @return A matrix of the infile
 #' @export
 create_test_trips<-function(M = 500, db, min.n = 1){
