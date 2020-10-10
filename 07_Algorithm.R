@@ -192,7 +192,7 @@ traveltimeCLT <- function(obj.data.train = NULL, obj.graph.stat.full = NULL, M =
   print(v)
   
   
-  # Return variables
+  # Returning variables
   obj <- list(variance = v, rho = rho)
   
   class(obj) = append(class(obj), "traveltime", after=0)
