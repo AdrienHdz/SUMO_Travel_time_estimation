@@ -42,7 +42,7 @@ mytimebins = c("MR", "ER", "Other")
 
 # We run the travel time estimation method
 
-graph <- graph.network(data.train = train, L = 2, data_TimeBins = mytimebins)
+graph <- graph.traveltimeCLT(data.train = train, L = 2, data_TimeBins = mytimebins)
 ttCLTmodel <- traveltimeCLT(obj.data.train = graph$data.train, obj.graph.stat.full = test_graph$graph.stat.full, M = 1000, bin = "MR", rules = myrules)
 
 ttCLTresults <- predict.traveltimeCLT(obj.traveltime = ttCLTmodel, obj.graph.stat.full = graph$graph.stat.full, data.test = test, bin = "MR", rules = myrules)

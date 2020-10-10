@@ -1,7 +1,7 @@
 # Created by Adrien Hernandez and Mohamad Elmasri
 
 
-graph.network <- function(data.train = NULL, L = NULL, data.timebins = NULL ){
+graph.traveltimeCLT <- function(data.train = NULL, L = NULL, data.timebins = NULL ){
   
   # A.0 We are starting to transform our data so that it takes on a network form. 
   # So, we transform the linkId variable into two variables: LinkId.from and LinkId.to. 
