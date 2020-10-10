@@ -10,7 +10,7 @@ source('07_Algorithm.R')
 
 
 # Loading data
-Sumo_data <- read.csv("Quebec/Sumo_data.csv")
+Sumo_data <- read.csv("Quebec_data/Real_data.csv")
 Sumo_data$speed <- exp(Sumo_data$logspeed)
 
 # Transforming variables
@@ -41,9 +41,9 @@ mytimebins = c("MR", "ER", "Other")
 
 
 # We run the travel time estimation method
-ttCLTmodel <- traveltimeCLT(data_train= train, L = 2, M = 1000, data_TimeBins = mytimebins,
-                            bin = "MR", rules = myrules)
 
-ttCLTresults <- predict.traveltimeCLT(traveltimeCLTobject = ttCLTmodel, data_test = test,
-                                      bin = "MR", rules = myrules)
+graph <- graph.network(data.train = train, L = 2, data_TimeBins = mytimebins)
+ttCLTmodel <- traveltimeCLT(obj.data.train = graph$data.train, obj.graph.stat.full = test_graph$graph.stat.full, M = 1000, bin = "MR", rules = myrules)
+
+ttCLTresults <- predict.traveltimeCLT(obj.traveltime = ttCLTmodel, obj.graph.stat.full = graph$graph.stat.full, data.test = test, bin = "MR", rules = myrules)
 
