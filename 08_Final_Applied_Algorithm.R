@@ -2,7 +2,9 @@
 
 #install.packages("devtools")
 #devtools::install_github("melmasri/traveltimeHMM")
+devtools::install_github("AdrienHdz/Sumo_Travel_time_estimation/traveltimeCLT")
 library(traveltimeHMM)
+library(traveltimeCLT)
 library(dplyr)
 library(tidyr)
 library(data.table)
@@ -10,15 +12,19 @@ library(data.table)
 
 # Loading data
 Sumo_data <- read.csv("Quebec_data/Real_data.csv")
+
+Sumo_data <- rename(Sumo_data, c("trip"="tripID", "timeBins"="timeBin", "linkId"="linkID", "tt"="traveltime"))
+
 Sumo_data$speed <- exp(Sumo_data$logspeed)
 
 # Transforming variables
 Sumo_data <- as.data.table(Sumo_data)
 Sumo_data$timeBins <- as.character(Sumo_data$timeBins)
 
+
 # Creating test trips
 set.seed(2020)
-test.trips.Sumo <- create_test_trips(M = 2000, Sumo_data, min.n = 1)
+test.trips.Sumo <- create_test_trips(M = 500, Sumo_data, min.n = 1)
 
 # Splitting data into train and test set
 test = Sumo_data[trip %in% test.trips.Sumo]
@@ -33,7 +39,7 @@ print(paste0("Number of trips in total: ", test[, 1, trip][, sum(V1)] + train[, 
 # Setting up the rules for our dataset
 myrules = list(
   list(start='6:30', end= '9:00', days = 0:6, tag='MR'),
-  list(start='15:00', end= '18:00', days = 0:6, tag='ER')
+  list(start='15:00', end= '18:00', days = 0:6, tag='ER'),
 )
 
 mytimebins = c("MR", "ER", "Other")
@@ -43,7 +49,7 @@ mytimebins = c("MR", "ER", "Other")
 
 graph <- graph_traveltimeCLT(data.train = train, L = 2, data.timebins = mytimebins)
 
-ttCLTmodel <- traveltimeCLT(obj.data.train = graph$data.train, obj.graph.stat.full = graph$graph.stat.full, M = 1000, bin = "MR", rules = myrules)
+ttCLTmodel <- traveltimeCLT(obj.data.train = graph$data.train, obj.graph.stat.full = graph$graph.stat.full, M = 500, bin = "MR", rules = myrules)
 
 ttCLTresults <- predict_traveltimeCLT(obj.traveltime = ttCLTmodel, obj.graph.stat.full = graph$graph.stat.full, data.test = test, bin = "MR", rules = myrules)
 
