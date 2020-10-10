@@ -13,8 +13,6 @@ library(data.table)
 # Loading data
 Sumo_data <- read.csv("Quebec_data/Real_data.csv")
 
-Sumo_data <- rename(Sumo_data, c("trip"="tripID", "timeBins"="timeBin", "linkId"="linkID", "tt"="traveltime"))
-
 Sumo_data$speed <- exp(Sumo_data$logspeed)
 
 # Transforming variables
@@ -38,18 +36,18 @@ print(paste0("Number of trips in total: ", test[, 1, trip][, sum(V1)] + train[, 
 
 # Setting up the rules for our dataset
 myrules = list(
-  list(start='6:30', end= '9:00', days = 0:6, tag='MR'),
-  list(start='15:00', end= '18:00', days = 0:6, tag='ER'),
+  list(start='6:30', end= '9:00', days = 0:6, tag='MorningRush'),
+  list(start='15:00', end= '18:00', days = 0:6, tag='EveningRush')
 )
 
-mytimebins = c("MR", "ER", "Other")
+mytimebins = c("MorningRush", "EveningRush", "Other")
 
 
 # We run the travel time estimation method
 
 graph <- graph_traveltimeCLT(data.train = train, L = 2, data.timebins = mytimebins)
 
-ttCLTmodel <- traveltimeCLT(obj.data.train = graph$data.train, obj.graph.stat.full = graph$graph.stat.full, M = 500, bin = "MR", rules = myrules)
+ttCLTmodel <- traveltimeCLT(obj.data.train = graph$data.train, obj.graph.stat.full = graph$graph.stat.full, M = 500, bin = "MorningRush", rules = myrules)
 
-ttCLTresults <- predict_traveltimeCLT(obj.traveltime = ttCLTmodel, obj.graph.stat.full = graph$graph.stat.full, data.test = test, bin = "MR", rules = myrules)
+ttCLTresults <- predict_traveltimeCLT(obj.traveltime = ttCLTmodel, obj.graph.stat.full = graph$graph.stat.full, data.test = test, bin = "EveningRush", rules = myrules)
 
