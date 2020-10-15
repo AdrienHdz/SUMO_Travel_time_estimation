@@ -80,12 +80,11 @@ ttCLTresults <- predict_traveltimeCLT(obj.traveltime = ttCLTmodel,
 				      bin = "MorningRush",
 				      rules = myrules)
 ```
-ttCLTresults <- predict_traveltimeCLT(ttCLTmodel, test, "MorningRush", myrules)
 
 
 ## References
 
-Woodard, D., Nogin, G., Koch, P., Racz, D., Goldszmidt, M., Horvitz, E.,
-2017. “Predicting travel time reliability using mobile phone GPS data”.
-*Transportation Research Part C*, 75, 30-44.
-<http://dx.doi.org/10.1016/j.trc.2016.10.011>
+Elmasri, M., Labbe, A., Larocque, D., Charlin, L,
+2020. “Prediction intervals for travel time on transportation networks”.
+
+<https://arxiv.org/abs/2004.11292>
