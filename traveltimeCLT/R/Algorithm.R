@@ -1,12 +1,12 @@
-#' Travel time estimation modelling using Central Limit Theorem
+#' Travel time estimation modeling using Central Limit Theorem
 #'
 #' This function allows to create the graph of the network and run the algorithm on the train set to get the mean of the autocorrelation and the mean of the residuals.
 #' @param data.train A dataframe that will be used to construct the graph.
 #' @param L A parameter allowing to remove edges that have not enough observations in the train set.
 #' @param data.timebins A vector of strings that represent the different timebins of the dataset.
-#' @param M The number of samples we want to use from our train set. This can be useful especially with applying the travel time estimation algorithm on a specific timebin.
-#' @param bin Allows to select a specific timebin from the dataset.
-#' @param rules Need to represent a list containing, start, end, days and tag for each timebin of the dataset (see example).
+#' @param M The number of samples to use from the train set. It is usefull especially when applying the travel time estimation algorithm on a specific time-bin.
+#' @param bin Sample the dataset by a specific time-bin.
+#' @param rules A list containing, start, end, days and tag for each timebin of the dataset (see example).
 #' @examples
 #' traveltimeCLT(data.train = train, M = 1000, L = 2, bin = "MR", rules = list(list(start='6:30', end= '9:00', days = 0:6, tag='MR'),list(start='15:00', end= '18:00', days = 0:6, tag='ER'), data.timebins = c("MR", "ER", "Other")))
 #' @import data.table
@@ -85,7 +85,7 @@ traveltimeCLT <- function(data.train = NULL, M = NULL, L = NULL, bin = NULL, rul
   # Merging with the train dataset
   data.train = merge(data.train, graph.stat.full, all.x = TRUE, by = c('linkId.from', 'linkId.to', 'timeBins'), sort = FALSE)[order(trip,time)]
 
-  # A.0 Sampling train dataset according to model input
+  # A.3 Sampling train dataset according to model input
   t = data.train[, .N , by=trip][N>10][, trip]
   sample_timebin = data.train[trip %in% t, .(timeBins= if(all(timeBins == timeBins[1])) timeBins[1] else 'remove' ), by=trip]
   sample_timebin = sample_timebin[!timeBins == 'remove']
@@ -101,7 +101,7 @@ traveltimeCLT <- function(data.train = NULL, M = NULL, L = NULL, bin = NULL, rul
     xx = tt[trip %in% samp, .I[.N>10],by = trip]
   }
 
-  # A.1 Get rho. The algorithm only keeps trips ("trips") that have more than 10 ijk links.
+  # A.4 Get rho. The algorithm only keeps trips ("trips") that have more than 10 ijk links.
   # On these links, we will create and use a function called "get rho" allowing to calculate
   # the autocovariance of the speed with a lag up to 5 for each trip.
   # If desired, the function also allows calculation specifically for AM or PM timebins.
@@ -110,7 +110,7 @@ traveltimeCLT <- function(data.train = NULL, M = NULL, L = NULL, bin = NULL, rul
   rho = round(mean(a), 2)
   print(paste0("Mean of autocorrelation: ", rho))
 
-  # A.2 Model computation through the param_zeta function:
+  # A.5 Model computation through the param_zeta function:
   # Now, we create our model which is a function (param_zeta), allowing to calculate the cumulative
   # variance and taking as parameters: t0 (a real time which will be converted into time bins by a
   # function calling the package traveltimeHMM), rho, linkfrom, linkto, len and sequence = FALSE.
@@ -174,7 +174,7 @@ traveltimeCLT <- function(data.train = NULL, M = NULL, L = NULL, bin = NULL, rul
       list(tt =t, sd = s)
     }}
 
-  # A.3 Residual variance.
+  # A.6 Residual variance.
   # We create a residual variance function, allowing to supply the residual variance taking as input: DB (data), rho, etsamp = NULL.
   # This function uses the param_zeta function seen above.
 

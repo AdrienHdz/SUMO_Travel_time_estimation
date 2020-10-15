@@ -2,7 +2,7 @@
 % Please edit documentation in R/Predict.R
 \name{predict_traveltimeCLT}
 \alias{predict_traveltimeCLT}
-\title{Travel time estimation modelling using Central Limit Theorem}
+\title{Travel time estimation modeling using Central Limit Theorem}
 \usage{
 predict_traveltimeCLT(
   obj.traveltime = NULL,

@@ -1,4 +1,4 @@
-#' Travel time estimation modelling using Central Limit Theorem
+#' Travel time estimation modeling using Central Limit Theorem
 #'
 #' This function allows to easily split the dataset into a train and a test set.
 #' @param M Number of test trips

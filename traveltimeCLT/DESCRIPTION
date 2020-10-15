@@ -1,12 +1,24 @@
 Package: traveltimeCLT
-Title: What the Package Does (One Line, Title Case)
+Title: Estimate and predict travel time on road networks
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
+Authors@R: c(
+    person(given = "Mohamad",
+           family = "Elmasri",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "elmasri.m@gmail.com"),
+    person(given = "Aurelie",
+           family = "Labbe",
+           role = "edt"),
+    person(given = "Denis",
+           family = "Larocque",
+           role = "edt"),
+    person(given = "Laurent",
+           family = "Charlin",
+           role = "edt"),
+    person(given = "Adrien",
+           family = "Hernandez",
+           role = "ctb")
+           )
 Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Algorithm.R
 \name{traveltimeCLT}
 \alias{traveltimeCLT}
-\title{Travel time estimation modelling using Central Limit Theorem}
+\title{Travel time estimation modeling using Central Limit Theorem}
 \usage{
 traveltimeCLT(
   data.train = NULL,
@@ -16,13 +16,13 @@ traveltimeCLT(
 \arguments{
 \item{data.train}{A dataframe that will be used to construct the graph.}
 
-\item{M}{The number of samples we want to use from our train set. This can be useful especially with applying the travel time estimation algorithm on a specific timebin.}
+\item{M}{The number of samples to use from the train set. It is usefull especially when applying the travel time estimation algorithm on a specific time-bin.}
 
 \item{L}{A parameter allowing to remove edges that have not enough observations in the train set.}
 
-\item{bin}{Allows to select a specific timebin from the dataset.}
+\item{bin}{Sample the dataset by a specific time-bin.}
 
-\item{rules}{Need to represent a list containing, start, end, days and tag for each timebin of the dataset (see example).}
+\item{rules}{A list containing, start, end, days and tag for each timebin of the dataset (see example).}
 
 \item{data.timebins}{A vector of strings that represent the different timebins of the dataset.}
 }

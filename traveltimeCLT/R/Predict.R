@@ -1,4 +1,4 @@
-#' Travel time estimation modelling using Central Limit Theorem
+#' Travel time estimation modeling using Central Limit Theorem
 #'
 #' This function allows to calculate travel time estimation confidence intervals on the test set.
 #' @param obj.traveltime Object coming from the function traveltimeCLT
