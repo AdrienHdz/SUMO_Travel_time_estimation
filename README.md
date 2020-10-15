@@ -41,6 +41,7 @@ trip	time	timeBins	tt	logspeed	length	linkId
 Transforming the variables
 
 ``` r
+trips <- as.data.table(trips)
 trips$speed <- exp(trips$logspeed)
 ```
 Splittig data into train and test sets.
