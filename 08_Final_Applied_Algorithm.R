@@ -45,9 +45,7 @@ mytimebins = c("MorningRush", "EveningRush", "Other")
 
 # We run the travel time estimation method
 
-graph <- graph_traveltimeCLT(data.train = train, L = 2, data.timebins = mytimebins)
+ttCLTmodel <- traveltimeCLT(train, 1000, 2, "MorningRush", myrules, mytimebins)
 
-ttCLTmodel <- traveltimeCLT(obj.data.train = graph$data.train, obj.graph.stat.full = graph$graph.stat.full, M = 500, bin = "MorningRush", rules = myrules)
-
-ttCLTresults <- predict_traveltimeCLT(obj.traveltime = ttCLTmodel, obj.graph.stat.full = graph$graph.stat.full, data.test = test, bin = "EveningRush", rules = myrules)
+ttCLTresults <- predict_traveltimeCLT(ttCLTmodel, test, "MorningRush", myrules)
 

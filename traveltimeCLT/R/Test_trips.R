@@ -1,4 +1,3 @@
-#' Created by Adrien Hernandez and Mohamad Elmasri
 #' Travel time estimation modelling using Central Limit Theorem
 #'
 #' This function allows to easily split the dataset into a train and a test set.

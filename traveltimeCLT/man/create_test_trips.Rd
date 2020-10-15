@@ -2,8 +2,7 @@
 % Please edit documentation in R/Test_trips.R
 \name{create_test_trips}
 \alias{create_test_trips}
-\title{Created by Adrien Hernandez and Mohamad Elmasri
-Travel time estimation modelling using Central Limit Theorem}
+\title{Travel time estimation modelling using Central Limit Theorem}
 \usage{
 create_test_trips(M = 500, db, min.n = 1)
 }

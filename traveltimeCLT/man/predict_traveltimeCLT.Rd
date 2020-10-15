@@ -2,12 +2,10 @@
 % Please edit documentation in R/Predict.R
 \name{predict_traveltimeCLT}
 \alias{predict_traveltimeCLT}
-\title{Created by Adrien Hernandez and Mohamad Elmasri
-Travel time estimation modelling using Central Limit Theorem}
+\title{Travel time estimation modelling using Central Limit Theorem}
 \usage{
 predict_traveltimeCLT(
   obj.traveltime = NULL,
-  obj.graph.stat.full = NULL,
   data.test = NULL,
   bin = NULL,
   rules = NULL
@@ -15,8 +13,6 @@ predict_traveltimeCLT(
 }
 \arguments{
 \item{obj.traveltime}{Object coming from the function traveltimeCLT}
-
-\item{obj.graph.stat.full}{Dataframe graph.stat.full coming from the function graph.traveltimeCLT}
 
 \item{data.test}{Test set.}
 
@@ -28,5 +24,5 @@ predict_traveltimeCLT(
 This function allows to calculate travel time estimation confidence intervals on the test set.
 }
 \examples{
-predict.traveltimeCLT(obj.traveltime = traveltimeCLT, obj.graph.stat.full = graph.traveltimeCLT$graph.stat.full, data.test = test, bin = "MR", rules = list(list(start='6:30', end= '9:00', days = 0:6, tag='MR'),list(start='15:00', end= '18:00', days = 0:6, tag='ER')))
+predict.traveltimeCLT(obj.traveltime = traveltimeCLT, data.test = test, bin = "MR", rules = list(list(start='6:30', end= '9:00', days = 0:6, tag='MR'),list(start='15:00', end= '18:00', days = 0:6, tag='ER')))
 }

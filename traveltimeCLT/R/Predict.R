@@ -1,19 +1,17 @@
-#' Created by Adrien Hernandez and Mohamad Elmasri
 #' Travel time estimation modelling using Central Limit Theorem
 #'
 #' This function allows to calculate travel time estimation confidence intervals on the test set.
 #' @param obj.traveltime Object coming from the function traveltimeCLT
-#' @param obj.graph.stat.full Dataframe graph.stat.full coming from the function graph.traveltimeCLT
 #' @param data.test Test set.
 #' @param bin Allows to select a specific timebin from the dataset.
 #' @param rules Need to represent a list containing, start, end, days and tag for each timebin of the dataset (see example).
 #' @examples
-#' predict.traveltimeCLT(obj.traveltime = traveltimeCLT, obj.graph.stat.full = graph.traveltimeCLT$graph.stat.full, data.test = test, bin = "MR", rules = list(list(start='6:30', end= '9:00', days = 0:6, tag='MR'),list(start='15:00', end= '18:00', days = 0:6, tag='ER')))
+#' predict.traveltimeCLT(obj.traveltime = traveltimeCLT, data.test = test, bin = "MR", rules = list(list(start='6:30', end= '9:00', days = 0:6, tag='MR'),list(start='15:00', end= '18:00', days = 0:6, tag='ER')))
 #' @import data.table
 #' @import traveltimeHMM
 #' @export
 
-predict_traveltimeCLT <- function(obj.traveltime = NULL, obj.graph.stat.full = NULL, data.test = NULL, bin = NULL , rules = NULL){
+predict_traveltimeCLT <- function(obj.traveltime = NULL, data.test = NULL, bin = NULL , rules = NULL){
 
   # A.0 We are starting to transform our data so that it takes on a network form.
   # So, we transform the linkId variable into two variables: LinkId.from and LinkId.to.
@@ -56,7 +54,7 @@ predict_traveltimeCLT <- function(obj.traveltime = NULL, obj.graph.stat.full = N
     t0 = as.POSIXlt(t0)
     time_bins <- rules2timebins(rules)
     tbin = time_bins(t0)
-    g = obj.graph.stat.full[linkId.from %in% linkfrom]
+    g = obj.traveltime$graph.stat.full[linkId.from %in% linkfrom]
     t = 0                               # time (mean)
     vcumlative = 0                                 # variance
     vprev = 1
