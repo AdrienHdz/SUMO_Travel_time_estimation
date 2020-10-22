@@ -2,7 +2,7 @@
 
 #install.packages("devtools")
 #devtools::install_github("melmasri/traveltimeHMM")
-devtools::install_github("AdrienHdz/Sumo_Travel_time_estimation/traveltimeCLT")
+devtools::install_github("AdrienHdz/traveltimeCLT")
 library(traveltimeHMM)
 library(traveltimeCLT)
 library(dplyr)
@@ -36,16 +36,24 @@ print(paste0("Number of trips in total: ", test[, 1, trip][, sum(V1)] + train[, 
 
 # Setting up the rules for our dataset
 myrules = list(
-  list(start='6:30', end= '9:00', days = 0:6, tag='MorningRush'),
-  list(start='15:00', end= '18:00', days = 0:6, tag='EveningRush')
+  list(start='6:30', end= '9:00', days = 0:6, tag='MR'),
+  list(start='15:00', end= '18:00', days = 0:6, tag='ER')
 )
 
-mytimebins = c("MorningRush", "EveningRush", "Other")
+mytimebins = c("MR", "ER", "Other")
 
 
 # We run the travel time estimation method
 
-ttCLTmodel <- traveltimeCLT(train, 1000, 2, "MorningRush", myrules, mytimebins)
+ttCLTmodel <- traveltimeCLT(data.train = train, 
+                            M = 1000,
+                            L = 2,
+                            bin = "MR",
+                            rules = myrules,
+                            data.timebins = mytimebins)
 
-ttCLTresults <- predict_traveltimeCLT(ttCLTmodel, test, "MorningRush", myrules)
+ttCLTresults <- predict_traveltimeCLT(ttCLTmodel, 
+                                      test, 
+                                      "MR", 
+                                      myrules)
 
