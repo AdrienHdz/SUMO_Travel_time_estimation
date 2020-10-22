@@ -3,7 +3,7 @@
 library(ggplot2)
 library(splitstackshape)
 
-Sumo_data <- read.csv("Quebec/Sumo_data.csv")
+Sumo_data <- read.csv("Quebec_data_2/Sumo_data.csv")
 
 # Visualization of the traffic density over 24h
 

@@ -8,8 +8,8 @@ library(data.table)
 library(traveltimeHMM)
 library(ggplot2)
 
-edges <- read.csv("Quebec/edges.csv")
-vehrouteData <- read.csv("Quebec/vehroutedata_cleaned.csv")
+edges <- read.csv("Quebec_data_2/edges.csv")
+vehrouteData <- read.csv("Quebec_data_2/vehroutedata_cleaned.csv")
 
 ## Format edges and keep edge ID and edge length
 edges_file <- function(edges){
@@ -77,4 +77,4 @@ Sumo_data = Sumo_data[order(tripID, time)]
 Sumo_data <- as.data.frame(Sumo_data)
 Sumo_data <- rename(Sumo_data, c("trip"="tripID", "timeBins"="timeBin", "linkId"="linkID", "tt"="traveltime"))
 
-write.csv(Sumo_data, "Quebec/Sumo_data.csv")
+write.csv(Sumo_data, "Quebec_data_2/Sumo_data.csv")

@@ -7,3 +7,9 @@ Quebec_data/vehroutedata.csv
 Quebec_data/vehroutedata_cleaned.csv
 Quebec_data/Sumo_data.csv
 Quebec_data/Real_data.csv
+
+Quebec_data_2/osm.vehroute.xml
+Quebec_data_2/vehroutedata.csv
+Quebec_data_2/vehroutedata_cleaned.csv
+Quebec_data_2/Sumo_data.csv
+Quebec_data_2/Real_data.csv

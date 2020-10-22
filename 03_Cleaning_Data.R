@@ -6,7 +6,7 @@ library(tidyr)
 library(data.table)
 
 # Reading data
-mydata <- read.csv("Quebec/vehroutedata.csv")
+mydata <- read.csv("Quebec_data_2/vehroutedata.csv")
 
 # Turning data into a correct format
 Correct_Shape <- function(data_input){
@@ -70,4 +70,4 @@ Setting_graph <- function(data_input){
 
 vehroutedata_cleaned <- Setting_graph(data)
 
-write.csv(vehroutedata_cleaned, "Quebec/vehroutedata_cleaned.csv")
+write.csv(vehroutedata_cleaned, "Quebec_data_2/vehroutedata_cleaned.csv")

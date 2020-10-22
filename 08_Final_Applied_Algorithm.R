@@ -11,7 +11,7 @@ library(data.table)
 
 
 # Loading data
-Sumo_data <- read.csv("Quebec_data/Real_data.csv")
+Sumo_data <- read.csv("Quebec_data_2/Sumo_data.csv")
 
 Sumo_data$speed <- exp(Sumo_data$logspeed)
 
@@ -38,6 +38,9 @@ print(paste0("Number of trips in total: ", test[, 1, trip][, sum(V1)] + train[, 
 myrules = list(
   list(start='6:30', end= '9:00', days = 0:6, tag='MR'),
   list(start='15:00', end= '18:00', days = 0:6, tag='ER')
+  #list(start='7:00', end= '10:00', days = 0:6, tag='MR'),
+  #list(start='12:00', end='15:00', days = 0:6, tag='NR'),
+  #list(start='17:00', end= '20:00', days = 0:6, tag='ER')
 )
 
 mytimebins = c("MR", "ER", "Other")

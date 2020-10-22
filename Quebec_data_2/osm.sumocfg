@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 05/03/20 14:41:45 by Eclipse SUMO Version 1.3.1
+-->
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="osm.net.xml"/>
+        <route-files value="normal.passenger.trips.xml, rushAM.passenger.trips.xml, rushPM.passenger.trips.xml"/>
+        <additional-files value="osm.poly.xml, osm.add.xml"/>
+    </input>
+	
+	<output>
+        <output-prefix value="osm."/>
+        <vehroute-output value="vehroute.xml"/>
+        <vehroute-output.route-length value="true"/>
+        <vehroute-output.exit-times value="true"/>
+		<vehroute-output.write-unfinished value="true"/> 
+		<!-- <human-readable-time value="true"/> -->
+    </output>
+
+    <processing>
+        <ignore-route-errors value="true"/>
+		<lateral-resolution value="0.3"/>
+        <ignore-junction-blocker value="60"/>
+        <collision.action value="teleport"/>
+        <max-depart-delay value="900"/>
+        <time-to-impatience value="30"/>
+        <pedestrian.model value="striping"/>
+		<time-to-teleport value="600"/>
+		<routing-algorithm value="dijkstra"/>
+        <default.emergencydecel value="decel"/>
+
+
+
+    </processing>
+
+    <routing>
+        <device.rerouting.probability value="1"/>
+        <device.rerouting.period value="300"/>
+        <device.rerouting.pre-period value="300"/>
+
+    </routing>
+
+    <report>
+        <verbose value="true"/>
+        <duration-log.statistics value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <gui_only>
+        <gui-settings-file value="osm.view.xml"/>
+    </gui_only>
+
+</configuration>
