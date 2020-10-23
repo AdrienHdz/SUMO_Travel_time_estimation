@@ -9,7 +9,7 @@ library(traveltimeHMM)
 library(ggplot2)
 
 edges <- read.csv("Quebec_data_2/edges.csv")
-vehrouteData <- read.csv("Quebec_data_2/vehroutedata_cleaned.csv")
+vehrouteData <- read.csv("Quebec_data_2/vehroutedata_clean.csv")
 
 ## Format edges and keep edge ID and edge length
 edges_file <- function(edges){
@@ -49,11 +49,11 @@ Sumo_data <- join_edges2trip(vehrouteData)
 
 ## Add time bins
 rules = list(
-  #list(start='7:00', end= '10:00', days = 0:6, tag='MR'),
-  #list(start='12:00', end='15:00', days = 0:6, tag='NR'),
-  #list(start='17:00', end= '20:00', days = 0:6, tag='ER')
-  list(start='6:30', end= '9:00', days = 0:6, tag='MR'),
-  list(start='15:00', end= '18:00', days = 0:6, tag='ER')
+  list(start='7:00', end= '10:00', days = 0:6, tag='MR'),
+  list(start='12:00', end='15:00', days = 0:6, tag='NR'),
+  list(start='17:00', end= '20:00', days = 0:6, tag='ER')
+  #list(start='6:30', end= '9:00', days = 0:6, tag='MR'),
+  #list(start='15:00', end= '18:00', days = 0:6, tag='ER')
 )
 time_bins <- rules2timebins(rules)
 Sumo_data$timeBin = time_bins(Sumo_data$time)
