@@ -11,7 +11,7 @@ library(data.table)
 
 
 # Loading data
-Sumo_data <- read.csv("Quebec_data_2/Sumo_data.csv")
+Sumo_data <- read.csv("Quebec_data/Real_data.csv")
 
 Sumo_data$speed <- exp(Sumo_data$logspeed)
 

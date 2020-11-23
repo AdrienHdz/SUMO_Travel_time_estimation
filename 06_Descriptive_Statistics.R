@@ -4,7 +4,7 @@ library(dplyr)
 library(tidyr)
 library(data.table)
 
-Sumo_data <- read.csv("Quebec/Sumo_data.csv")
+Sumo_data <- read.csv("Quebec_data/Sumo_data.csv")
 
 Sumo_data <- as.data.frame(Sumo_data)
 Sumo_trips <- Sumo_data %>% group_by(trip)%>%tally()

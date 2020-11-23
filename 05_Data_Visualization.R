@@ -3,7 +3,7 @@
 library(ggplot2)
 library(splitstackshape)
 
-Sumo_data <- read.csv("Quebec_data_2/Sumo_data.csv")
+Sumo_data <- read.csv("Quebec_data/Sumo_data.csv")
 
 # Visualization of the traffic density over 24h
 
@@ -11,8 +11,9 @@ Sumo_data_time <- data.frame(Data=as.POSIXct(Sumo_data$time, format="%Y-%m-%d %H
 
 ggplot(Sumo_data_time, aes(x=Data)) + 
   geom_histogram(binwidth=100, fill="grey", colour="black") + #binwidth in seconds
-  ylab("Number of trips") + #xlab should pick up variable name 'Data'
-  ggtitle("Traffic on 24h")
+  ylab("Nombre de voitures") + 
+  xlab('heure de la journée')+#xlab should pick up variable name 'Data'
+  ggtitle("Nombre de voitures présentes dans le réseau")
 
 # Visualization of the variation of the speed for a sample of trip
 Sumo_data <- getanID(data = Sumo_data, id.vars = "trip")

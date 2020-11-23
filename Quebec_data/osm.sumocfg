@@ -31,9 +31,6 @@
 		<time-to-teleport value="600"/>
 		<routing-algorithm value="dijkstra"/>
         <default.emergencydecel value="decel"/>
-
-
-
     </processing>
 
     <routing>
