@@ -30,7 +30,6 @@
     <routing>
         <device.rerouting.probability value="20"/>
         <device.rerouting.period value="300"/>
-        <device.rerouting.pre-period value="300"/>
 
     </routing>
 
